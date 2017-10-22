@@ -36,6 +36,10 @@ Plug 'mhinz/vim-signify'
 Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ryanss/vim-hackernews'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'darthmall/vim-vue'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -46,6 +50,12 @@ filetype on
 set relativenumber number
 
 
+"""""""""""""""""""""""""""""""
+"""""""" editor    """"""""""""
+"""""""""""""""""""""""""""""""
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 
 """""""""""""""""""""""""""""""
 """"""" Plugin Configs """"""""
@@ -82,10 +92,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='onedark'
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts=1
+
+
 " onedark.vim
 
 syntax on
-"let g:solarized_termcolors=16
 set background=dark
 let g:onedark_termcolors=256
 colorscheme onedark 
@@ -100,6 +111,8 @@ colorscheme onedark
 "  Automatic code formatting
 let g:elm_format_autosave = 1
 
+
+ 
 """"""""""""""""""""""""""""""""
 """""""" Shortcuts """""""""""""
 """"""""""""""""""""""""""""""""
