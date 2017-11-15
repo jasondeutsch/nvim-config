@@ -40,6 +40,8 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'darthmall/vim-vue'
 Plug 'jiangmiao/auto-pairs'
+Plug 'leafgarland/typescript-vim'
+Plug 'mattesgroeger/vim-bookmarks'
 
 call plug#end()
 
@@ -117,6 +119,10 @@ let g:elm_format_autosave = 1
 """""""" Shortcuts """""""""""""
 """"""""""""""""""""""""""""""""
 
+" Insert at EOL or BOL from insert mode
+" Useful for dealing with autopairs and the like.
+inoremap <C-e> <Esc>A
+inoremap <C-a> <Esc>I
 
 
 cnoreabbrev W! w!
