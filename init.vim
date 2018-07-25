@@ -13,9 +13,12 @@ set runtimepath+='~/.config/nvim/plugged/deoplete.nvim/'
 
 " Vim Plug
 call plug#begin('~/.config/nvim/plugged')
-
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'icymind/neosolarized'
+Plug 'colepeters/spacemacs-theme.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
@@ -34,32 +37,48 @@ Plug 'carlosgaldino/elixir-snippets'
 Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/goyo.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'ryanss/vim-hackernews'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'darthmall/vim-vue'
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
 Plug 'mattesgroeger/vim-bookmarks'
-Plug 'icymind/neosolarized'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'ryanoasis/vim-devicons'
+Plug 'dag/vim2hs'
+
+
+
+" Init Plugin Systems
+call plug#end()
+
+" deoplete
+" Use deoplete.
+call deoplete#enable()
 
 """"""""""""""""""""""""""""""""
 """""""" Shortcuts """""""""""""
 """"""""""""""""""""""""""""""""
-Plug 'colepeters/spacemacs-theme.vim'
 
-call plug#end()
-
+" Insert at EOL or BOL from insert mode
+" Useful for dealing with autopairs and the like.
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
 """""""""""""""""""""""""""""""
 """""""" Interface """"""""""""
 """""""""""""""""""""""""""""""
 filetype on
 set relativenumber number
 set cursorline
-set paste
-
+set mouse=a
 
 """""""""""""""""""""""""""""""
 """""""" editor    """"""""""""
@@ -67,15 +86,17 @@ set paste
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+set encoding=utf8
+au TermOpen * setlocal nonumber norelativenumber
+set nofoldenable    " disable folding
 
 """""""""""""""""""""""""""""""
 """"""" Plugin Configs """"""""
 """""""""""""""""""""""""""""""
 
-" deoplete
-" Use deoplete.
-call deoplete#enable()
-
+"NERD_FONT
+set encoding=utf8
+set guifont=KnackRegular_Nerd_Font:h12
 " ale
 " Enable completion where available.
 let g:ale_completion_enabled = 1
@@ -91,7 +112,7 @@ set hidden
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
-let NERDTreeQuitOnOpen=1
+let NERDTreeQuitOnOpen=0
 
 " vim-airline
 let g:airline#extensions#tabline#left_sep = ' '
@@ -99,31 +120,21 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "" Automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
-let g:airline_time='onedark'
+let g:airline_theme='gruvbox'
 
 
 " colorscheme
+"
+" let g:neosolarized_bold = 1
+" let g:neosolarized_italic = 1
+let g:enable_bold_font = 0
+let g:enable_italic_font = 1
 
-syntax on
-let g:onedark_termcolors=256
-set background="dark"
-colorscheme onedark 
 
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
+set termguicolors
+"let g:solarized_termcolors=256
+set background=dark
+colorscheme gruvbox 
 
 """"""""""""""""""""""""""""""""
 """""""" Lang Support """"""""""
@@ -133,26 +144,3 @@ endif
 "" Elm
 "  Automatic code formatting
 let g:elm_format_autosave = 1
-
-
-
-""""""""""""""""""""""""""""""""
-"""""""" Shortcuts """""""""""""
-""""""""""""""""""""""""""""""""
-
-" Insert at EOL or BOL from insert mode
-" Useful for dealing with autopairs and the like.
-inoremap <C-e> <Esc>A
-inoremap <C-a> <Esc>I
-
-
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
