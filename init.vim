@@ -91,9 +91,23 @@ au TermOpen * setlocal nonumber norelativenumber
 set nofoldenable    " disable folding
 set tabstop=2
 
+
+
 """""""""""""""""""""""""""""""
 """"""" Plugin Configs """"""""
 """""""""""""""""""""""""""""""
+
+" vimgo
+let g:go_auto_type_info = 1
+
+
+" ale
+" Error and warning signs.
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
+
 
 "NERD_FONT
 set encoding=utf8
