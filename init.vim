@@ -89,6 +89,7 @@ set softtabstop=2
 set encoding=utf8
 au TermOpen * setlocal nonumber norelativenumber
 set nofoldenable    " disable folding
+set tabstop=2
 
 """""""""""""""""""""""""""""""
 """"""" Plugin Configs """"""""
