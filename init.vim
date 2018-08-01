@@ -149,7 +149,7 @@ let g:enable_italic_font = 1
 set termguicolors
 "let g:solarized_termcolors=256
 set background=dark
-colorscheme gruvbox 
+colorscheme gruvbox
 
 """"""""""""""""""""""""""""""""
 """""""" Lang Support """"""""""
